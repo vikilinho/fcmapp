@@ -8,6 +8,10 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +26,14 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const TextField(
+                      TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
                           labelText: 'Email',
                         ),
                       ),
-                      const TextField(
+                      TextField(
+                        controller: _passwordController,
                         decoration: InputDecoration(
                           labelText: 'Password',
                         ),
