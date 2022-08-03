@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -8,7 +10,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameontroller = TextEditingController();
@@ -38,10 +39,14 @@ class _SignUpState extends State<SignUp> {
                           labelText: 'Password',
                         ),
                       ),
-                      const TextField(
+                      TextField(
+                        controller: _nameontroller,
                         decoration: InputDecoration(
                           labelText: 'name',
                         ),
+                      ),
+                      SizedBox(
+                        height: 10.0,
                       ),
                       ElevatedButton(
                           onPressed: () {}, child: const Text("Sign Up"))
