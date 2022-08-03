@@ -1,26 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-      ),
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(),
-      )),
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text('FCM APP'),
+        ),
+        body: SafeArea(
+          child: Center(
+            child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                        ),
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                        ),
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'name',
+                        ),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {}, child: const Text("Sign Up"))
+                    ])),
+          ),
+        ));
   }
 }
