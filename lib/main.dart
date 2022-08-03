@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -12,7 +15,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,10 +39,23 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('FCM APP'),
-      ),
-      body: Container(),
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text('FCM APP'),
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(children: <Widget>[
+              const TextField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                ),
+              ),
+              const TextField(
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                ),
+              ),
+            ])));
   }
 }
