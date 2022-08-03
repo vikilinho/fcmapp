@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:fcmapp/services/firebase_services.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -13,6 +14,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameontroller = TextEditingController();
+  bool isloading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,14 @@ class _SignUpState extends State<SignUp> {
                         height: 10.0,
                       ),
                       ElevatedButton(
-                          onPressed: () {}, child: const Text("Sign Up"))
+                          onPressed: () {
+                            setState(() {
+                              isloading = true;
+                            });
+                            FirebaseHelper.signUp(_emailController.text,
+                                _passwordController.text, context);
+                          },
+                          child: const Text("Sign Up"))
                     ])),
           ),
         ));
