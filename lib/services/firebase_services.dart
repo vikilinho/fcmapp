@@ -16,7 +16,8 @@ class FirebaseHelper {
       final UserCredential credentials = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
       if (credentials.user != null) {
-        return true;
+        return ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(credentials.user!.displayName.toString())));
       } else {
         return false;
       }

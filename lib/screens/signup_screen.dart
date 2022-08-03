@@ -50,15 +50,20 @@ class _SignUpState extends State<SignUp> {
                       SizedBox(
                         height: 10.0,
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              isloading = true;
-                            });
-                            FirebaseHelper.signUp(_emailController.text,
-                                _passwordController.text, context);
-                          },
-                          child: const Text("Sign Up"))
+                      isloading
+                          ? CircularProgressIndicator()
+                          : ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  isloading = true;
+                                });
+                                FirebaseHelper.signUp(_emailController.text,
+                                    _passwordController.text, context);
+                                setState(() {
+                                  isloading = false;
+                                });
+                              },
+                              child: const Text("Sign Up"))
                     ])),
           ),
         ));
