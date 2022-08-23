@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,20 +14,22 @@ class FirebaseHelper {
 
   static Future signUp(
       String email, String password, BuildContext context) async {
-    try {
-      final UserCredential credentials = await _auth
-          .createUserWithEmailAndPassword(email: email, password: password);
-      if (credentials.user != null) {
-        return ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(credentials.user!.displayName.toString())));
-      } else {
-        return false;
-      }
-    } catch (e) {
+    final UserCredential credentials = await _auth
+        .createUserWithEmailAndPassword(email: email, password: password);
+    log(credentials.user?.uid as String);
+    // log(credentials.user?.displayName as String);
+
+    if (credentials.user != null) {
+      log(credentials.user?.uid as String);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(e.toString()),
+        content: Text(credentials.user?.uid as String),
       ));
+    } else {
+      return false;
     }
+    //  catch (e) {
+
+    // }
   }
 
   static Future signOut() async {
