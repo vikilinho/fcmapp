@@ -112,7 +112,7 @@ class _SignUpState extends State<SignUp> {
                             });
                             // FirebaseHelper.signUp(_emailController.text,
                             //     _passwordController.text, context);
-                            signup(context);
+                            signout(context);
 
                             setState(() {
                               isloading = false;
