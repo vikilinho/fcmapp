@@ -52,27 +52,6 @@ class _SignUpState extends State<SignUp> {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.disconnect();
-    if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
-      final AuthCredential authCredential = GoogleAuthProvider.credential(
-          idToken: googleSignInAuthentication.idToken,
-          accessToken: googleSignInAuthentication.accessToken);
-      log(googleSignInAuthentication.accessToken.toString());
-
-      // Getting users credential
-      UserCredential result = await auth.signInWithCredential(authCredential);
-      User? user = result.user;
-      log(" email ===> ${user!.email.toString()}");
-      log(" display name ===> ${user.displayName.toString()}");
-
-      if (result != null) {
-        // Navigator.pushReplacement(
-        //     context, MaterialPageRoute(builder: (context) => HomePage()));
-
-      } // if result not null we simply call the MaterialpageRoute,
-      // for go to the HomePage screen
-    }
   }
 
   @override
